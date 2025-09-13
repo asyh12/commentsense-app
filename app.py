@@ -67,7 +67,7 @@ roberta_model = AutoModelForSequenceClassification.from_pretrained(ROBERTA_MODEL
 labels = {0: "Negative", 1: "Neutral", 2: "Positive"}
 
 comments = pd.read_parquet(os.path.join(BASE_DIR, "comments_final_labels.parquet"))
-videos = pd.read_csv(os.path.join(BASE_DIR, "videos.csv"))
+videos = pd.read_csv(os.path.join(BASE_DIR, "videos_sampled.csv"))
 
 # sentiment prediction
 def predict_sentiment(text, model, tokenizer):
