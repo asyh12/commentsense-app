@@ -8,3 +8,7 @@ fastapi
 uvicorn[standard]
 pyarrow
 tqdm
+matplotlib
+numpy
+seaborn
+pyarrow
