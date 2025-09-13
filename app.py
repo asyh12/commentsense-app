@@ -7,7 +7,7 @@ import torch
 import matplotlib.pyplot as plt
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
-BASE_DIR = "/content/drive/MyDrive/LorealDatathon/deployment"
+BASE_DIR = "."
 
 # spam & category rules
 def apply_rules(comment, pred):
