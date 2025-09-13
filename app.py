@@ -55,14 +55,14 @@ vectorizer = joblib.load(os.path.join(BASE_DIR, "vectorizer.pkl"))
 spam_model = joblib.load(os.path.join(BASE_DIR, "spam_model.pkl"))
 
 # Sentiment models
-XLM_DIR = os.path.join(BASE_DIR, "xlm_sentiment_model")
-ROBERTA_DIR = os.path.join(BASE_DIR, "roberta_sentiment_model")
+XLM_MODEL_NAME = "cardiffnlp/twitter-xlm-roberta-base-sentiment"
+ROBERTA_MODEL_NAME = "cardiffnlp/twitter-roberta-base-sentiment"
 
-xlm_tokenizer = AutoTokenizer.from_pretrained(XLM_DIR)
-xlm_model = AutoModelForSequenceClassification.from_pretrained(XLM_DIR).to("cpu")
+xlm_tokenizer = AutoTokenizer.from_pretrained(XLM_MODEL_NAME)
+xlm_model = AutoModelForSequenceClassification.from_pretrained(XLM_MODEL_NAME).to("cpu")
 
-roberta_tokenizer = AutoTokenizer.from_pretrained(ROBERTA_DIR)
-roberta_model = AutoModelForSequenceClassification.from_pretrained(ROBERTA_DIR).to("cpu")
+roberta_tokenizer = AutoTokenizer.from_pretrained(ROBERTA_MODEL_NAME)
+roberta_model = AutoModelForSequenceClassification.from_pretrained(ROBERTA_MODEL_NAME).to("cpu")
 
 labels = {0: "Negative", 1: "Neutral", 2: "Positive"}
 
