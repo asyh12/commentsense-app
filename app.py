@@ -55,11 +55,26 @@ vectorizer = joblib.load(os.path.join(BASE_DIR, "vectorizer.pkl"))
 spam_model = joblib.load(os.path.join(BASE_DIR, "spam_model.pkl"))
 
 # Sentiment models
+#XLM_MODEL_NAME = "cardiffnlp/twitter-xlm-roberta-base-sentiment"
+from transformers import XLMRobertaTokenizer, AutoModelForSequenceClassification
+
 XLM_MODEL_NAME = "cardiffnlp/twitter-xlm-roberta-base-sentiment"
+
+# Use the official XLM-R tokenizer for CardiffNLP
+xlm_tokenizer = XLMRobertaTokenizer.from_pretrained(
+    XLM_MODEL_NAME,
+    use_fast=True,
+    add_prefix_space=True
+)
+
+xlm_model = AutoModelForSequenceClassification.from_pretrained(
+    XLM_MODEL_NAME
+).to("cpu")
+
 ROBERTA_MODEL_NAME = "cardiffnlp/twitter-roberta-base-sentiment"
 
-xlm_tokenizer = AutoTokenizer.from_pretrained(XLM_MODEL_NAME, use_fast=False)
-xlm_model = AutoModelForSequenceClassification.from_pretrained(XLM_MODEL_NAME).to("cpu")
+#xlm_tokenizer = AutoTokenizer.from_pretrained(XLM_MODEL_NAME, use_fast=False)
+#xlm_model = AutoModelForSequenceClassification.from_pretrained(XLM_MODEL_NAME).to("cpu")
 
 roberta_tokenizer = AutoTokenizer.from_pretrained(ROBERTA_MODEL_NAME, use_fast=False)
 roberta_model = AutoModelForSequenceClassification.from_pretrained(ROBERTA_MODEL_NAME).to("cpu")
