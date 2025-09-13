@@ -58,10 +58,10 @@ spam_model = joblib.load(os.path.join(BASE_DIR, "spam_model.pkl"))
 XLM_MODEL_NAME = "cardiffnlp/twitter-xlm-roberta-base-sentiment"
 ROBERTA_MODEL_NAME = "cardiffnlp/twitter-roberta-base-sentiment"
 
-xlm_tokenizer = AutoTokenizer.from_pretrained(XLM_MODEL_NAME)
+xlm_tokenizer = AutoTokenizer.from_pretrained(XLM_MODEL_NAME, use_fast=False)
 xlm_model = AutoModelForSequenceClassification.from_pretrained(XLM_MODEL_NAME).to("cpu")
 
-roberta_tokenizer = AutoTokenizer.from_pretrained(ROBERTA_MODEL_NAME)
+roberta_tokenizer = AutoTokenizer.from_pretrained(ROBERTA_MODEL_NAME, use_fast=False)
 roberta_model = AutoModelForSequenceClassification.from_pretrained(ROBERTA_MODEL_NAME).to("cpu")
 
 labels = {0: "Negative", 1: "Neutral", 2: "Positive"}
