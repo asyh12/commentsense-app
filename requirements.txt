@@ -1,0 +1,10 @@
+pandas
+scikit-learn
+joblib
+transformers
+torch
+streamlit
+fastapi
+uvicorn[standard]
+pyarrow
+tqdm
